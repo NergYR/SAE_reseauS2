@@ -3,21 +3,25 @@
 
 
 function nginx () {
-    mkdir /tmp/backup/nginx
-    cp -R /etc/nginx/* /tmp/backup/nginx/
+    mkdir -p /tmp/backup/nginx
+    rsync -av /etc/nginx/ /tmp/backup/nginx/
 }
+
 function apache () {
-    mkdir /tmp/backup/apache
-    cp -R /etc/apache/* /tmp/backup/apache/
+    mkdir -p /tmp/backup/apache
+    rsync -av /etc/apache/ /tmp/backup/apache/
 }
+
 function dhcp () {
-    mkdir /tmp/backup/dhcp
-    cp -R /etc/dhcp/* /tmp/dhcp/
+    mkdir -p /tmp/backup/dhcp
+    rsync -av /etc/dhcp/ /tmp/backup/dhcp/
 }
+
 function bind () {
-    mkdir /tmp/backup/bind
-    cp -R /etc/bind/* /tmp/bind/
+    mkdir -p /tmp/backup/bind
+    rsync -av /etc/bind/ /tmp/backup/bind/
 }
+
 
 function backup () {
     mkdir /tmp/backup/
