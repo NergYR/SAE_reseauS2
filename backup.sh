@@ -4,19 +4,19 @@
 
 function nginx () {
     mkdir /tmp/backup/nginx
-    cp /etc/nginx/* /tmp/backup/nginx/*
+    cp /etc/nginx/*.* /tmp/backup/nginx/*.*
 }
 function apache () {
     mkdir /tmp/backup/apache
-    cp /etc/apache/* /tmp/backup/apache/*
+    cp /etc/apache/*.* /tmp/backup/apache/*.*
 }
 function dhcp () {
     mkdir /tmp/backup/dhcp
-    cp /etc/dhcp/* /tmp/dhcp/*
+    cp /etc/dhcp/*.* /tmp/dhcp/*.*
 }
 function bind () {
     mkdir /tmp/backup/bind
-    cp /etc/bind/* /tmp/bind/*
+    cp /etc/bind/*.* /tmp/bind/*.*
 }
 
 function backup () {
@@ -59,7 +59,7 @@ echo "------------------------------------------"
 
 
 
-read -rep "Output dir : " outputdir
+read -rep "Output File : " outputdir
 echo $outputdir
 echo "##########################################"
 echo "          Backup Setup                    "
