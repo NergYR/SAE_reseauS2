@@ -2,20 +2,22 @@
 
 
 
-echo "------------------------------------------"
-echo "##########################################"
-echo "          Endorium Backup Script          "
-echo "##########################################"
-echo "------------------------------------------"
-
-
-
-read -rep "Output dir : " outputdir
-echo $outputdir
-echo "##########################################"
-echo "          Backup Setup                    "
-echo "##########################################"
-
+function nginx () {
+    mkdir /tmp/backup/nginx
+    cp /etc/nginx/* /tmp/backup/nginx/*
+}
+function apache () {
+    mkdir /tmp/backup/apache
+    cp /etc/apache/* /tmp/backup/apache/*
+}
+function dhcp () {
+    mkdir /tmp/backup/dhcp
+    cp /etc/dhcp/* /tmp/dhcp/*
+}
+function bind () {
+    mkdir /tmp/backup/bind
+    cp /etc/bind/* /tmp/bind/*
+}
 
 function backup () {
     mkdir /tmp/backup/
@@ -42,4 +44,25 @@ function backup () {
     rm -r /tmp/backup/
 
 }
+
+
+
+
+
+
+
+echo "------------------------------------------"
+echo "##########################################"
+echo "          Endorium Backup Script          "
+echo "##########################################"
+echo "------------------------------------------"
+
+
+
+read -rep "Output dir : " outputdir
+echo $outputdir
+echo "##########################################"
+echo "          Backup Setup                    "
+echo "##########################################"
+backup
 
