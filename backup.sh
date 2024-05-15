@@ -21,11 +21,11 @@ function bind () {
 
 function backup () {
     mkdir /tmp/backup/
-    echo "Choose what service for backup ?"
-    read "Nginx ? [Y/N]" nginxc
-    read "Apache ? [Y/N]" apachec
-    read "DHCP ? [Y/N]" dhcpc
-    read "Bind ? [Y/N]" bindc
+    echo "Choose what service for backup ? "
+    read -rep "Nginx ? [Y/N] : " nginxc
+    read -rep "Apache ? [Y/N] : " apachec
+    read -rep "DHCP ? [Y/N] : " dhcpc
+    read -rep "Bind ? [Y/N] : " bindc
     
     if [[ "$nginxc" =~ ^([yY][eE][sS]|[yY]|[oO][uU][iI]|[oO])$ ]]; then
         nginx
