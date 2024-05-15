@@ -4,19 +4,19 @@
 
 function nginx () {
     mkdir /tmp/backup/nginx
-    cp /etc/nginx/*.* /tmp/backup/nginx/*.*
+    cp -R /etc/nginx/* /tmp/backup/nginx/
 }
 function apache () {
     mkdir /tmp/backup/apache
-    cp /etc/apache/*.* /tmp/backup/apache/*.*
+    cp -R /etc/apache/* /tmp/backup/apache/
 }
 function dhcp () {
     mkdir /tmp/backup/dhcp
-    cp /etc/dhcp/*.* /tmp/dhcp/*.*
+    cp -R /etc/dhcp/* /tmp/dhcp/
 }
 function bind () {
     mkdir /tmp/backup/bind
-    cp /etc/bind/*.* /tmp/bind/*.*
+    cp -R /etc/bind/* /tmp/bind/
 }
 
 function backup () {
