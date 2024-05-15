@@ -1,0 +1,227 @@
+!
+! Last configuration change at 19:22:10 UTC Mon Mar 1 1993
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SR1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip routing
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-227433216
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-227433216
+ revocation-check none
+ rsakeypair TP-self-signed-227433216
+!
+!
+crypto pki certificate chain TP-self-signed-227433216
+ certificate self-signed 01
+  30820239 308201A2 A0030201 02020101 300D0609 2A864886 F70D0101 04050030
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 32323734 33333231 36301E17 0D393330 33303130 30303130
+  375A170D 32303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3232 37343333
+  32313630 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100
+  C29A404A 4DC8E134 62028900 8F14808B B908184F 71E0B2D1 A866B1CE 1B5A8E22
+  0E97D289 6DBBF821 771C899E 0FDDAEAA 7035C382 269D5F0D E1A3EADF 19B61128
+  7F65F3DF 008F6A9A CD0534CF 038BEA2A 71AD2214 E165E286 20CFE847 41F9B576
+  22B6BF22 56ADEB29 5DC9794F 4523D92D 1C7E54B9 BC46282A D810D2A8 5B03D027
+  02030100 01A36330 61300F06 03551D13 0101FF04 05300301 01FF300E 0603551D
+  11040730 05820353 5231301F 0603551D 23041830 1680141F E285D1FC B74B06DA
+  2FDA5B25 B9FDC1A0 5D6DA130 1D060355 1D0E0416 04141FE2 85D1FCB7 4B06DA2F
+  DA5B25B9 FDC1A05D 6DA1300D 06092A86 4886F70D 01010405 00038181 00328583
+  80567863 9A183BC1 3AB52ABC 5BEF95A0 257004B1 488CF6C7 5BB10FB6 BB6BDF67
+  8DDBDBCF 6C4B1200 DF169912 CFFAB3B1 E5151701 27906D36 A9D1240D 8ACE1D63
+  9F3A4F94 C7498E4A 9EB69462 E21A8145 C26D5493 912BE7DF 90322726 7E8E088B
+  8B8A2667 93384375 BFE962EE 0A2A1968 750BCE36 389BE658 981C1EE4 3D
+        quit
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface FastEthernet0/25
+!
+interface FastEthernet0/26
+!
+interface FastEthernet0/27
+!
+interface FastEthernet0/28
+!
+interface FastEthernet0/29
+!
+interface FastEthernet0/30
+!
+interface FastEthernet0/31
+!
+interface FastEthernet0/32
+!
+interface FastEthernet0/33
+!
+interface FastEthernet0/34
+!
+interface FastEthernet0/35
+!
+interface FastEthernet0/36
+!
+interface FastEthernet0/37
+!
+interface FastEthernet0/38
+!
+interface FastEthernet0/39
+!
+interface FastEthernet0/40
+!
+interface FastEthernet0/41
+!
+interface FastEthernet0/42
+!
+interface FastEthernet0/43
+!
+interface FastEthernet0/44
+!
+interface FastEthernet0/45
+!
+interface FastEthernet0/46
+ no switchport
+ ip address 172.16.100.1 255.255.255.0
+!
+interface FastEthernet0/47
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20,30,40,50
+!
+interface FastEthernet0/48
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20,30,40,50
+ switchport mode trunk
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface GigabitEthernet0/3
+!
+interface GigabitEthernet0/4
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ ip address 172.16.10.254 255.255.255.0
+ ip helper-address 172.16.10.253
+ ip ospf 1 area 0
+!
+interface Vlan20
+ ip address 172.16.20.254 255.255.255.0
+ ip helper-address 172.16.10.253
+ ip ospf 1 area 0
+!
+interface Vlan30
+ ip address 172.16.30.254 255.255.255.0
+ ip helper-address 172.16.10.253
+ ip ospf 1 area 0
+!
+interface Vlan40
+ ip address 172.16.40.250 255.255.255.0
+ ip helper-address 172.16.10.253
+!
+interface Vlan50
+ ip address 172.16.50.250 255.255.255.0
+ ip helper-address 172.16.10.253
+!
+router ospf 1
+ router-id 172.16.100.1
+ network 172.16.10.0 0.0.0.255 area 0
+ network 172.16.20.0 0.0.0.255 area 0
+ network 172.16.30.0 0.0.0.255 area 0
+ network 172.16.100.0 0.0.0.255 area 0
+!
+ip http server
+ip http secure-server
+!
+!
+!
+logging esm config
+!
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end

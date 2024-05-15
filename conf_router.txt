@@ -1,110 +1,93 @@
-hostname Routeur_Endorium
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
 !
 boot-start-marker
 boot-end-marker
 !
-logging message-counter syslog
-enable secret 5 $1$9CqL$eHs/jTBMXgsGhzZU4KJ.K0
+enable password password
 !
 no aaa new-model
-!
 dot11 syslog
-ip source-route
 !
 !
 ip cef
 !
 !
 no ip domain lookup
-no ipv6 cef
-!
+ip domain name monentreprise.local
 multilink bundle-name authenticated
 !
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 voice-card 0
+ no dspfarm
 !
 !
 !
 !
 !
-username cisco password 0 cisco
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 archive
  log config
   hidekeys
 !
 !
-!
-!
-!
+ip ssh version 2
 !
 !
 !
 !
 interface FastEthernet0/0
- ip address 172.16.0.1 255.255.255.0
- ip nat outside
- ip virtual-reassembly
- duplex auto
- speed auto
-!
-interface FastEthernet0/1
- ip address 192.168.1.1 255.255.255.0
+ ip address 172.16.100.254 255.255.255.0
  ip nat inside
  ip virtual-reassembly
  duplex auto
  speed auto
 !
-interface FastEthernet0/0/0
- no ip address
- shutdown
- duplex auto
- speed auto
-!
-interface FastEthernet0/0/1
- no ip address
- shutdown
+interface FastEthernet0/1
+ ip address 193.1.1.1 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly
  duplex auto
  speed auto
 !
 router ospf 1
- router-id 4.4.4.4
+ router-id 172.16.100.254
  log-adjacency-changes
- network 172.16.0.0 0.0.0.255 area 0
- network 193.1.1.0 0.0.0.255 area 0
+ network 172.16.100.0 0.0.0.255 area 0
+ default-information originate
 !
 ip forward-protocol nd
-ip route 0.0.0.0 0.0.0.0 172.16.0.254
-no ip http server
+ip route 0.0.0.0 0.0.0.0 193.1.1.254
+!
+!
+ip http server
 no ip http secure-server
+ip nat inside source list 1 interface FastEthernet0/1 overload
 !
+ip access-list extended DMZ_IN
+ permit tcp any any eq 22
+ip access-list extended DMZ_OUT
 !
-ip nat inside source list 10 interface FastEthernet0/0 overload
-!
-access-list 10 permit any
-!
-!
-!
+access-list 1 permit any
 !
 !
 !
@@ -118,17 +101,13 @@ control-plane
 !
 !
 !
-!
-gatekeeper
- shutdown
-!
-!
 line con 0
 line aux 0
 line vty 0 4
- password cisco
  login local
- transport input telnet
+ transport input ssh
+ transport output ssh
 !
 scheduler allocate 20000 1000
+!
 end
