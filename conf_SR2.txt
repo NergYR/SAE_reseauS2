@@ -1,12 +1,4 @@
 !
-! Last configuration change at 23:29:31 UTC Tue Mar 2 1993
-!
-version 12.2
-no service pad
-service timestamps debug datetime msec
-service timestamps log datetime msec
-no service password-encryption
-!
 hostname SR2
 !
 boot-start-marker
@@ -153,23 +145,23 @@ interface Vlan1
 !
 interface Vlan10
  ip address 172.16.10.250 255.255.255.0
- ip helper-address 172.16.10.253
+ ip helper-address 172.16.40.253
 !
 interface Vlan20
  ip address 172.16.20.250 255.255.255.0
- ip helper-address 172.16.10.253
+ ip helper-address 172.16.40.253
 !
 interface Vlan30
  ip address 172.16.30.250 255.255.255.0
- ip helper-address 172.16.10.253
+ ip helper-address 172.16.40.253
 !
 interface Vlan40
  ip address 172.16.40.254 255.255.255.0
- ip helper-address 172.16.10.253
+ ip helper-address 172.16.40.253
 !
 interface Vlan50
  ip address 172.16.50.254 255.255.255.0
- ip helper-address 172.16.10.253
+ ip helper-address 172.16.40.253
 !
 router ospf 1
  router-id 1.1.1.1

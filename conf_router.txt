@@ -1,9 +1,4 @@
 !
-version 12.4
-service timestamps debug datetime msec
-service timestamps log datetime msec
-no service password-encryption
-!
 hostname R1
 !
 boot-start-marker
@@ -82,10 +77,14 @@ ip route 0.0.0.0 0.0.0.0 193.1.1.254
 ip http server
 no ip http secure-server
 ip nat inside source list 1 interface FastEthernet0/1 overload
+ip nat inside source static tcp 172.16.100.254 80 193.1.1.1 80 extendable
 !
-ip access-list extended DMZ_IN
- permit tcp any any eq 22
 ip access-list extended DMZ_OUT
+ permit tcp any 172.16.40.0 0.0.0.255 eq 22
+ permit tcp any 172.16.40.0 0.0.0.255 eq www
+ permit udp any 172.16.40.0 0.0.0.255 eq domain
+ permit tcp any any eq domain
+ permit udp any any eq domain
 !
 access-list 1 permit any
 !
